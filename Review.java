@@ -165,4 +165,32 @@ public class Review {
       return randomNegativeAdj();
     }
   }
+}  
+  public static double totalSentiment(String text)
+  {
+    removePunctuation(text);
+    
+    String word = "";
+    String cha = "";
+    double value = 0;
+  
+    for (int i = 0; i < text.length(); i++)
+    {
+      cha = text.substring(i, i + 1);
+  
+      if (cha == SPACE)
+      {
+        //run sentimentval
+        value += sentimentVal(word);
+        //set word to nothing
+        word = "";
+      } else {
+        word += cha;
+      }
+    }
+    return value;
+  }
+  Scanner input = new Scanner(System.in);
+  String review = input.nextLine();
+  System.out.println(sentimentVal("critical"));
 }
